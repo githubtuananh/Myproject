@@ -1,0 +1,252 @@
+/* -------------------------------MOBILE--------------------------------- */
+/* ---------------------------------RESPONSIVE---------------------------------------------------- */
+/* Xử lý responsive */
+.nav-bar{
+    display: none;
+}
+.container.mobile{
+    display: none;
+}
+.loader-mobile{
+    display: none;
+}
+@media screen and (max-width: 45rem){
+    .header,.sub-header,.menu,.container.computer,.loader-computer{
+        display: none;
+    }
+    .loader-mobile{
+        display: block;
+    }
+    .container{
+        padding: 0 2%;
+        width: 100%;
+    }
+    .container.mobile{
+        display: block;
+        padding-bottom: 10rem;
+        padding-top: 3rem;
+    }
+    /* --------------------------------------Content */
+    .container{
+        width: 100%;
+        margin: 0;
+    }
+    .container .block .items{
+        width: 100%;
+        height: unset;
+        grid-column: span 6;
+        border-radius: .3rem;
+        background-color: #ffffff;
+        box-shadow: 0 .2rem 1rem rgba(0,0,0,.2);
+    }
+    .container .block{
+        display: grid;
+        grid-template-columns: repeat(12,1fr);
+        grid-gap: 1rem;
+        height: unset;
+    }
+    .container .block .items-film, .items-book, .items-app{
+        margin-bottom: 0.3rem;
+    }
+
+    /* --------------------------------------Film */
+    .container .block .items-film{
+        height: unset;
+    }
+    .container .block .items-film img{
+        width: 100%;
+        height: unset;
+        border-top-right-radius: .3rem;
+        border-top-left-radius: .3rem;
+        height: 100%;
+    }
+    .container .block .items-film .img::after{
+        height: 99%;
+    }
+
+    /* -----------------------------------Book */
+    .container .block .items-book img{
+        width: 96%;
+        height: unset;
+        margin: 0 2%;
+        border: none;
+        cursor: pointer;
+        transition: opacity 0.5s;
+    }
+
+    /* -----------------------------------App */
+    .container .block-app .items{
+        width: 100%;
+        height: unset;
+    }
+    .container .block .items-app img{
+        width: 90%;
+        height: unset;
+        margin: 1rem;
+        cursor: pointer;
+        transition: opacity 0.5s;
+    }
+
+    /* /----------------------------------------- */
+    .container .container-title{
+        padding-top: 7rem;
+        padding-bottom: 2rem;
+        display: flex;
+        justify-content: space-between;
+    }
+    .container .container-title p{
+        font-size: 2rem;
+        color:#6e6b6b;
+        line-height: 3rem;
+        /* color: #a52714; */
+        font-weight: 800;
+    }
+    .container .container-title button{
+        height: 3rem;
+    }
+    /* ------------------------------------------------narbar */
+    .nav-bar{
+        display: block;
+        height: 6rem;
+        width: 100%;
+        background-color: rgba(6, 8, 30, 1);
+        position: relative;
+        z-index: 50;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    .nav-bar .nav-bar1{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        position: relative;
+    }
+    .nav-bar .fa-bars{
+        color: #ffffff;
+        font-size: 3rem;
+        margin-right: 2rem;
+    }
+    .nav-bar .name-store{
+        font-size: 2rem;
+        font-weight: 800;
+        color: #ffffff;
+        margin-left: .5rem;
+    }
+    .nav-bar .slide-navbar{
+        height: 40rem;
+        width: 100%;
+        background-color: rgba(11, 30, 48, 0.95);
+        z-index: 3;
+        position: absolute;
+        top: 100%;
+        display: none;
+    }
+    /* ---------------------------------------user-------------------------- */
+    .nav-bar1 .block-user{
+        /* margin-left: 100px; */
+        flex-grow: 1;
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 2rem;
+    }
+    .nav-bar1 .fa-user-circle-o{
+        color: #ffffff;
+        font-size: 2.3rem;
+        margin-right: .5rem;
+    }
+    .nav-bar1 .fa-sort-desc{
+        color: #ffffff;
+    }
+    .nav-bar1 .block-user .slide-user{
+        position: absolute;
+        width: 19rem;
+        height: 9.2rem;
+        top: 6.5rem;
+        right: 5.5rem;
+        background-color:#242424;
+        color: #ffffff;
+        display: none;
+    }
+    .block-user .slide-user .mobile{
+        font-size: 1.4rem;
+        padding: .8rem 1.6rem;
+    }
+    .block-user .slide-user .content-user{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .block-user .slide-user .mobile.login:hover{
+        background-color: #04abf2;
+    }
+    .block-user .slide-user .mobile.register:hover{
+        background-color: #ed3b3b;
+    }
+    .content-user .account.mobile:hover, .logout.mobile:hover{
+        background-color: rgba(4, 171, 242, 0.3);
+    }
+    .content-user .logout.mobile{
+        color: #ffffff;
+    }
+    /* --------------------login register------------------------ */
+    .page-login,.page-register{
+        width: 100vw;
+        height: 100vh;
+        overflow: auto;
+    }
+
+    /* ---------------------------Menu--------------------------------- */
+    .menu-mobile{
+        /* margin-left: 2rem; */
+        border-bottom: 1px solid #b4adad;
+    }
+    .menu-mobile li{
+        display: flex;
+        padding: 1.7rem 3rem;
+    }
+    .menu-mobile li p{
+        color: #ffffff;
+        font-size: 1.6rem;
+    }
+    .menu-mobile li .fa{
+        color: #ffffff;
+        font-size: 2rem;
+        padding-right: 1.2rem;
+    }
+    .menu-mobile li:hover{
+        background-color: rgba(4, 171, 242, 0.3);
+    }
+    .menusub-mobile{
+        margin-top: 1rem;
+    }
+    .menusub-mobile p{
+        color: #ffffff;
+        font-size: 1.6rem;
+        padding: 1.3rem 3rem;
+    }
+    .menusub-mobile p:hover{
+        background-color: rgba(4, 171, 242, 0.3);
+    }
+
+    /* ----------------------------------LOADING PAGE------------------------------- */
+    .loader-mobile{
+        width: 100%;
+        height: 100%;
+        background-color:rgba(11, 30, 48, 1);
+        position: absolute;
+        z-index: 10000;
+        top: 0;
+        left: 0;
+        text-align: center;
+    }
+    .loader-mobile .block-loading{
+        position:fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 10rem;
+    }
+}

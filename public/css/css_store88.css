@@ -1,0 +1,698 @@
+/* ------------------------------------------------------------------------------ */
+/* reset css */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html {
+    color: #333;
+    font-family: "Open Sans", sans-serif;
+    background-color: #f1f1f1;
+    font-size: 62.5%;
+}
+a{
+    text-decoration: none;
+}
+
+
+/* ------------------------------------------------------------------------------- */
+/* Xử lý header */
+.header{
+    height: 6rem;
+    display: flex;
+    align-items: center;
+}
+.header #img-logo{
+    margin:0 3rem;
+}
+.header .login-register{
+    width: 40%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 2rem;
+}
+.header .form-group{
+    width: 50%;
+}
+.header .form-group input{
+    /* min-width: 55rem; */
+    width: 100%;
+    height: 3rem;
+    border-radius:0.3rem;
+    padding-left: 1rem;
+    outline:none;
+    border:none;
+    border: 0.1rem solid #ccc;
+    font-size: 1.5rem;
+    margin-left: -1rem;
+}
+.header .login-register #login{
+    background-color: #4584f0;
+    margin-right: 1rem;
+}
+.header .login-register #register{
+    background-color: #ed3b3b;
+}
+.header .login-register #logout{
+    background-color: #444;
+}
+.header .login-register #register,#login,#logout{
+    display:inline-block;
+    height: 3rem;
+    padding:0 1.2rem;
+    line-height: 3rem;
+    font-size:1.3rem;
+    color:#ffffff;
+    font-weight:bold;
+    border-radius:0.2rem;
+    cursor: pointer;
+}
+.login-register .avatar{
+    width: 3rem;
+    height: 3rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+}
+
+/* ------------------------------------------------------------------------------ */
+.sub-header{
+    background-color: #ffffff;
+    height: 4.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0 0.5rem 0.1rem rgb(233, 231, 231);
+    position: relative;
+    z-index: 5;
+}
+.sub-header .support div{
+    display: inline-block;
+    border:0.1rem solid #ccc;
+    border-radius:0.5rem;
+    box-shadow: 0 0 0.1rem;
+    margin:0 0.6rem;
+    cursor: pointer;
+}
+.sub-header .support{
+    margin-right: 5rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.sub-header .support .fa-question-circle{
+    font-size: 2rem;
+    padding: 0.3rem 1.2rem;
+}
+.sub-header .support .fa-cog{
+    font-size: 2rem;
+    padding: 0.3rem 2rem;
+}
+
+/* -------------------------------------------------------------------------------- */
+.menu{
+    width: 20rem;
+    background-color: #ffffff;
+    box-shadow: 0 0 0.5rem #ccc;
+    position:absolute;
+    top: 6rem;
+    min-height: 30rem;
+    z-index: 5;
+}
+.menu-items{
+    height:4.8rem;
+    line-height: 4.8rem;
+    cursor: pointer;
+    width: 20rem;
+}
+.menu-items .icon{
+    font-size: 2.4rem;
+    min-width: 6.5rem;
+    padding: 0 0 0 2.8rem;
+    color: #ffffff;
+    display: inline-block;
+    height:100%;
+}
+.menu-items a{
+    font-size: 1.8rem;
+    color: #555555;
+    padding-left: 0.5rem;
+}
+.menu-items .item4{
+    background-color:#444;
+}
+.menu .menu-items .item1{
+    background-color: #689f38;
+}
+.menu .menu-items .item2{
+    background-color: #ed3b3b;
+}
+.menu .menu-items .item3{
+    background-color: #039be5;
+}
+.menu .app:hover{
+    background-color: #689f38;
+}
+.menu .film:hover{
+    background-color: #ed3b3b;
+}
+.menu .book:hover{
+    background-color: #039be5;
+}
+.game{
+    background-color: #444;
+}
+.game a{
+    color: #ffffff;
+}
+.game:hover{
+    background-color: #444;
+}
+.menu-items:hover a{
+    color: #ffffff;
+}
+.menu .sub-menu{
+    background-color: #f1f1f1;
+    box-shadow: 0 0 0.5rem #ccc;
+    font-size: 1.4rem;
+    color: #555555;
+    padding: 1rem 0;
+}
+.menu .sub-menu .list-menu{
+    cursor: pointer;
+    list-style: none;
+}
+.menu .sub-menu .list-menu > li{
+    padding: 0.8rem 1.2rem 0.8rem 2.3rem;
+    width: 100%;
+}
+.menu .sub-menu .list-menu > li:hover{
+    background-color: rgb(221, 218, 218);
+}
+
+/* ----------------------------------------------------------------------------------
+Xử lý js phần scroll */
+.stop-subheader{
+    position:fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+.stop-menu{
+    position:fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+/* -------------------------------------------------------------------------------- */
+/* Xử lý ajax khung trợ giúp */
+.block-support{
+    width: 36rem;
+    height: 48rem;
+    background-color: #ffffff;
+    position: absolute;
+    top: 5.4rem;
+    display: none;
+    border-radius: 1.5rem;
+    box-shadow: 0 0 0.5rem 0 #ccc;
+    right: 0;
+    margin-right: 12.5rem;
+    padding-top: 2.5rem;
+}
+.block-support .header{
+    height: 5.6rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.block-support .header .fa{
+    font-size: 2.4rem;
+    cursor: pointer;
+    color: #1a73e8;
+}
+.block-support .title{
+    font-size: 2.3rem;
+    color: #555555;
+    width: 32rem;
+    padding-left: 3rem;
+}
+.block-support .form-group{
+    display: flex;
+    width: 34rem;
+    height: 5.6rem;
+    align-items: center;
+    margin-left: 1rem;
+    box-shadow: 0 0 0.5rem #ccc;
+    border-radius: 1rem;
+}
+.block-support .form-group .fa{
+   font-size: 1.8rem;
+   padding-left: 1.5rem;
+   cursor: pointer;
+   color: #1a73e8;
+}
+.block-support .form-group input{
+    width: 30rem;
+    height: 4.8rem;
+    outline: none;
+    border: none;
+    padding-left: 2rem;
+    font-size: 1.5rem;
+}
+.block-support .bonus .block{
+    width: 32rem;
+    height: 9.6rem;
+    box-shadow: 0 0 0.5rem #ccc;
+    border-radius: 1rem;
+    margin: 0.8rem 0;
+    padding-right: 0.3rem;
+    display: flex;
+    font-size: 1.4rem;
+    align-items: center;
+    margin-left: 0.4rem;
+    line-height: 1.4;
+}
+.block-support .bonus{
+    margin-left: 1.6rem;
+}
+.block-support .bonus .block i{
+    font-size: 2.4rem;
+    padding: 0 1.5rem 0 2rem;
+    color: #1a73e8;
+}
+.block-support .bonus .block:hover{
+    background-color:rgb(240, 236, 236);
+    cursor: pointer;
+}
+.move{
+    transition: transform 0.6s;
+}
+
+/* ---------------------------------------------------------------------------------- */
+.container{
+    /* width: 840px; */
+    margin-left: 25rem;
+    padding-bottom: 10rem;
+}
+.container .block .items{
+    width: 16rem;
+    height: 33rem;
+    border-radius: 0.3rem;
+    background-color: #ffffff;
+    box-shadow: 0 0.2rem 1rem rgba(0,0,0,.2);
+/* grid-column:span 3; */
+}
+.container .block{
+    display: grid;
+    grid-gap: 1rem;
+    height: 33.3rem;
+    grid-template-columns: repeat(auto-fit, minmax(16rem,16rem));
+    overflow: hidden;
+/* grid-template-columns:repeat(15,1fr); */
+}
+.container .container-title{
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+.container .container-title p{
+    font-size: 2.8rem;
+    color:#333333;
+}
+
+/* làm mờ tên sản phẩm khi quá dài */
+.gradient{
+    position: absolute;
+    background-image: linear-gradient(450deg, rgba(255, 255, 255, 0.1) , rgba(255, 255, 255, 1) 80%);
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 2;
+}
+.name-film{
+    position: relative;
+}
+.name-film::after,.name-book::after,.name-app::after{
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background-image: linear-gradient(450deg, rgba(255, 255, 255, 0.1) , rgba(255, 255, 255, 1) 130%);
+}
+
+/* ********** film css */
+.container .block .items-film .img{
+    position: relative;
+}
+.container .block .items-film img{
+    width: 16rem;
+    height: 23rem;
+    border-top-right-radius: 0.3rem;
+    border-top-left-radius: 0.3rem;
+    cursor: pointer;
+}
+.container .block .items-film .img .fa-play{
+    font-size: 4.5rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 35%;
+    color: rgba(224, 221, 221, 0.9);
+    z-index: 2;
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+.container .block .items-film .img::after{
+    position: absolute;
+    z-index: 1;
+    content: "";
+    width: 100%;
+    height: 23rem;
+    top: 0;
+    right: 0;
+    display: none;
+}
+/* hover film */
+.container .block .items .img:hover::after{
+    background-color: rgba(0, 0, 0, 0.5);
+    display: block;
+}
+.container .block .items-film .img .fa-play:hover{
+    visibility: visible;
+    opacity: 1;
+}
+
+/* ************************* */
+/* Css book */
+.container .block .items-book img{
+    width: 15rem;
+    height: 23rem;
+    margin:0 .5rem;
+    border:none;
+    cursor: pointer;
+    transition: opacity 0.5s;
+}
+
+/* *****Css App */
+.container .block-app{
+    display: grid;
+    height: 22.8rem;
+    grid-template-columns: repeat(auto-fit, minmax(16rem,16rem));
+    overflow: hidden;
+}
+.container .block-app .items{
+    width: 16rem;
+    height: 22.5rem;
+}
+.container .block .items-app img{
+    width: 14rem;
+    height: 14rem;
+    margin: 1rem;
+    cursor: pointer;
+    transition: opacity 0.5s;
+}
+/* Xử lý hover app và book */
+.container .block .items img:hover{
+    opacity: 0.6;
+}
+
+/* ************************************ */
+/* Xử lý button (Xem thêm) */
+.container .container-title button{
+    font-size: 1.4rem;
+    font-weight: bold;
+    color:#ffffff;
+    padding: 0 1.3rem;
+    border: none;
+    border-radius: 0.5rem;
+    outline: none;
+    cursor: pointer;
+    /* margin-right: 20px; */
+}
+.blue{
+    background-color:#039be5 ;
+}
+.blue:hover{
+    background-color:#4bb4e9 ;
+}
+.green{
+    background-color:#689f38;
+}
+.green:hover{
+    background-color:#97dd5a ;
+}
+.red{
+    background-color:#ed3b3b;
+}
+.red:hover{
+    background-color:#f16f6f ;
+}
+
+/* **************************************** */
+/* Xử lý thông tin chi tiết  */
+.container .details-film .name-film, .details-book .name-book, .details-app .name-app{
+    font-size: 1.6rem;
+    color: #333333;
+    /* text-overflow: ellipsis; */
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 0.3rem 0;
+    cursor: pointer;
+    position: relative;
+}
+.container .details-film,.details-book{
+    padding: 0.7rem 1rem;
+    height: 6rem;
+}
+.container .details-app{
+    padding: 0 1rem;
+    height: 4rem;
+}
+
+/* Xử lý hower thông tin  */
+.container .details-film .name-film:hover{
+    text-decoration-line: underline;
+}
+.container .details-book .name-book:hover{
+    text-decoration-line: underline;
+}
+.container .details-app .name-app:hover{
+    text-decoration-line: underline;
+}
+
+/* Xử lý tác giả thể loại nhà sản xuất  */
+.container .details-film .type-film{
+    font-size: 1.3rem;
+    color: #616161;
+}
+.container .details-book .actor{
+    font-size: 1.3rem;
+    color: #333333;
+}
+.container .details-app .producer{
+    font-size: 1.3rem;
+    color: #333333;
+}
+
+/* Xử lý giá   */
+.container .items-film .evaluate-price .price{
+    font-size: 1.3rem;
+    color: #a52714;
+    cursor: pointer;
+}
+.container .items-book .evaluate-price .price{
+    font-size: 1.3rem;
+    color: #4d89b9;
+    cursor: pointer;
+}
+.container .items-app .evaluate-price .price{
+    font-size: 1.3rem;
+    color: #5f8a4f;
+    cursor: pointer;
+}
+.container  .items-app .evaluate-price{
+    padding: 0.5rem 1rem;
+}
+.container .evaluate-price .price:hover{
+    text-decoration-line: underline;
+}
+.container .evaluate-price .evaluate{
+    font-size: 1rem;
+    color: #737373;
+}
+.container  .evaluate-price{
+    display: flex;
+    padding: 1rem;
+    justify-content: space-between;
+}
+
+/* -----------------------------------LOGIN----------------------------------------- */
+/* Trang đăng nhập */
+.page-login{
+    width: 30rem;
+    height: 45rem;
+    background-color: #ffffff;
+    position: absolute;
+    z-index: 6;
+    top: 6rem;
+    box-shadow: 0 0.2rem 1rem rgba(0,0,0,.2);
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.main{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    max-width: 200rem;
+}
+.cover-main{
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    z-index: 6;
+    display: none;
+}
+.page-login #title{
+    margin: 5rem 0 3rem 0;
+    text-align: center;
+    font-size: 2.3rem;
+    font-weight: bold;
+    color: #4584f0;
+}
+.page-login form, .page-register form{
+    margin-top: 2rem;
+    width: 90%;
+    padding-left: 10%;
+
+}
+.page-login form input, .page-register form input{
+    width: 100%;
+    height: 3.5rem;
+    margin-bottom: 0.5rem;
+    outline: none;
+    background-color: #e7e7e7;
+    border: none;
+    padding-left: 2rem;
+    font-size: 1.3rem;
+}
+.page-login form input[type="checkbox"], .page-register form input[type="checkbox"]{
+    width: 1.3rem;
+    height: 1.3rem;
+}
+.page-login form button{
+    margin-top: 2rem;
+    width: 100%;
+    height: 3.5rem;
+    background-color: #4584f0;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 1.3rem;
+}
+.page-login form button:hover, .page-register form button:hover{
+    opacity: 0.6;
+}
+.page-login .support-account{
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+.page-login .support-account > a{
+    color: rgba(0, 0, 0, 0.8);
+}
+.login-google{
+    background-color: #df4a32;
+    width: 100%;
+    height: 3.5rem;
+    font-size: 1.5rem;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    line-height: 3.5rem;
+    border-radius: 0.5rem;
+}
+.login-google:hover{
+    background-color: #e47260;
+    cursor: pointer;
+}
+/* .page-login .block-logins{
+    display: flex;
+    justify-content: space-around;
+}
+.page-login .block-logins .item-login{
+    display: flex;
+    width: 48%;
+    justify-content: center;
+    border: 0.1rem solid #ccc;
+    padding: 0.6rem 0.3rem;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+.page-login .block-logins .item-login .fa{
+    margin-right: .5rem;
+    font-size: 1.3rem;
+} */
+/* ----------------------------------REGISTER------------------------------------ */
+.page-register{
+    width: 30rem;
+    height: 45rem;
+    background-color: #ffffff;
+    position: absolute;
+    z-index: 6;
+    top: 6rem;
+    box-shadow: 0 .2rem 1rem rgba(0,0,0,.2);
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.page-register #title{
+    margin: 5rem 0 3rem 0;
+    text-align: center;
+    font-size: 2.3rem;
+    font-weight: bold;
+    color: #ed3b3b;
+}
+.page-register form button{
+    margin-top: 2rem;
+    width: 100%;
+    height: 3.5rem;
+    background-color: #ed3b3b;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 1.3rem;
+}
+
+/* ----------------------------------LOADING PAGE------------------------------- */
+.loader-computer{
+    width: 100%;
+    height: 100%;
+    background-color:#ffffff;
+    position: absolute;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    text-align: center;
+}
+.loader-computer .block-loading{
+    position:fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20rem;
+}
+
+
+
