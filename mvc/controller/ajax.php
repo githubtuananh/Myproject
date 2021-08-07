@@ -16,8 +16,9 @@
         // Xử lý đăng nhập
         public function login(){
             echo '<div class="page-login" >
+                <i class="fa fa-times" aria-hidden="true"></i>
                 <p id="title">Đăng nhập</p>
-                <form action="/demoGooglePlay/store/login" method="post" class="">
+                <form action="/demoGooglePlay/store/login" method="post" class="loginForm">
                     <div class="form-group">
                         <input type="text" name="username" class="form-control" placeholder="Username" required>
                     </div>
@@ -50,19 +51,24 @@
         // Xử lý đăng kí
         public function register(){
             echo '<div class="page-register">
+                <i class="fa fa-times" aria-hidden="true"></i>
                 <p id="title">Đăng kí</p>
-                <form action="" method="post" class="">
+                <form action="/demoGooglePlay/store/register" method="post" class="registerForm">
                     <div class="form-group">
                         <input type="text" name="email" class="form-control" placeholder="Email" required>
+                        <p class="message check-email"></p>
                     </div>
                     <div class="form-group">
                         <input type="text" name="username" class="form-control" placeholder="Tài khoản" required>
+                        <p class="message exist-username"></p>
                     </div>
                     <div class="form-group">
                         <input unmark="show" name="password" type="password" class="form-control" placeholder="Mật khẩu" required>
+                        <p class="message check-password"></p>
                     </div>
                     <div class="form-group">
                         <input unmark="show" name="password-confirm" type="password" class="form-control" placeholder="Nhập lại mật khẩu" required>
+                        <p class="message check-passwordCf"></p>
                     </div>
                     <div class="show-password">
                         <input type="checkbox" id="show-hide">
@@ -73,10 +79,24 @@
                     <div class="form-group">
                         <button type="submit" name="btn-register" class="form-control btn btn-primary submit px-3">Register</button>
                     </div>
+                    <div class = "status">
+                    </div>
                 </form>
             </div>';
         }
-
+        public function checkUsername(){
+            $username = isset($_POST['username']) ? trim(htmlspecialchars($_POST['username'])) : '';
+            $exist = $this->modelsAccount->checkRegister($username);
+            echo $exist;
+        }
+        public function registerForm(){
+            $email = isset($_POST['email']) ? trim(htmlspecialchars($_POST['email'])) : '';
+            $username = isset($_POST['username']) ? trim(htmlspecialchars($_POST['username'])) : '';
+            $password = isset($_POST['password']) ? trim(htmlspecialchars($_POST['password'])) : '';
+            $passwordCf = isset($_POST['password-confirm']) ? trim(htmlspecialchars($_POST['password-confirm'])) : '';
+            $result = $this->modelsAccount->Register($username, $password,$email);
+            echo $result;
+        }
 
         // -------------------------------------COMPUTER-------------------------
 

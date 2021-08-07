@@ -2,20 +2,21 @@
     // header('Access-Control-Allow-Origin:*');
     // header('Content-Type: application/json');
 
-use Facebook\Exceptions\FacebookSDKException;
-use Facebook\Tests\Authentication\AccessTokenTest;
-
 class controllerAPI extends controller{
         protected $gClient;
+        protected $modelApps;
         protected $modelMovies;
+        protected $modelBooks;
         protected $modelsAccount;
         
         public function __construct(){
-            $this->modelMovies = $this->model('Movies');
             $this->modelsAccount = $this->model('Account');
+            $this->modelMovies = $this->model('Movies');
+            $this->modelBooks = $this->model('Books');
+            $this->modelApps = $this->model('Apps');
         }
         //Xem thông tin phim
-        public function Read(){
+        public function Readmovies(){
             $movie = [];
             $movie['film'] = [];
             $film = $this->modelMovies->getMoviesEarly();
@@ -82,9 +83,8 @@ class controllerAPI extends controller{
                     $email = $userData['email'];
                     $avatar = $userData['picture'];
                     $result = $this->modelsAccount->insertAccount($name,$email,$avatar);
-                    if($result == true){
-                        header('location: /demoGooglePlay/store');
-                    }
+                    
+                    header('location: /demoGooglePlay/store');
                 }
                 else{
                     header('location: /demoGooglePlay/store');
@@ -132,6 +132,14 @@ class controllerAPI extends controller{
             setcookie('user', '', time() - 60*60, '/'); 
             header('location: /demoGooglePlay/store');
             die();
+        }
+
+        public function url(){
+            // echo $_GET['test'];
+            // $url = 'http://localhost:8888/demoGooglePlay/API/url/asd?test=123';
+            // $url = explode('/',trim($url));
+            // print_r($url);
+            // echo $_GET['test'];
         }
     }
 ?>

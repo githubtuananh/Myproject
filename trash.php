@@ -1,4 +1,23 @@
 <h1>asdasdasd</h1>
+// public function store(){
+        //     $this->views = $this->view('MasterLayout/storeMain'
+        //     ,[  
+        //         'viewComputer' => $this->view('MasterLayout/storeComputer',[
+        //             'listMoviesBestSale' => $this->modelMovies->getMoviesBestSale(),
+        //             'listMoviesEarly' => $this->modelMovies->getMoviesEarly(),
+        //             'listBooks' => $this->modelBooks->getBooks(),
+        //             'listApps' => $this->modelApps->getApps(),
+        //         ]),
+
+        //         // ----------------------------------------------------
+        //         'viewMobile' => $this->view('MasterLayout/storeMobile',[
+        //             'listMoviesBestSaleMb' => $this->modelMovies->getMoviesBestSaleMb(),
+        //             'listMoviesEarlyMb' => $this->modelMovies->getMoviesEarlyMb(),
+        //             'listBookBestSalesMb' => $this->modelBooks->getBookBestSaleMb(),
+        //             'listAppsBestDownMb' => $this->modelApps->getAppBestDownMb(),
+        //         ])
+        //     ]);
+        // }
 <?php 
 //goi thu vien
 require_once('library/PHPMailer-5.2.26/class.smtp.php');
@@ -39,6 +58,10 @@ function sendMail($title, $content, $nTo, $mTo,$diachicc=''){
         return 1;
     }
 }
+
+require_once('library/PHPMailer-5.2.26/class.smtp.php');
+require_once('library/PHPMailer-5.2.26/class.phpmailer.php'); 
+require_once('library/VerifyEmail/VerifyEmail.class.php'); 
 // Initialize library class
 $mail = new VerifyEmail();
 

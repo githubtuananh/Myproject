@@ -13,32 +13,6 @@
             $this->modelApps = $this->model('Apps');
         }
 
-        public function login(){
-            $username = isset($_POST['username']) ? $_POST['username'] : '';
-            $password = isset($_POST['password']) ? $_POST['password'] : '';
-            $this->modelsAccount->checkLogin($username,$password);
-        }
-
-        // public function store(){
-        //     $this->views = $this->view('MasterLayout/storeMain'
-        //     ,[  
-        //         'viewComputer' => $this->view('MasterLayout/storeComputer',[
-        //             'listMoviesBestSale' => $this->modelMovies->getMoviesBestSale(),
-        //             'listMoviesEarly' => $this->modelMovies->getMoviesEarly(),
-        //             'listBooks' => $this->modelBooks->getBooks(),
-        //             'listApps' => $this->modelApps->getApps(),
-        //         ]),
-
-        //         // ----------------------------------------------------
-        //         'viewMobile' => $this->view('MasterLayout/storeMobile',[
-        //             'listMoviesBestSaleMb' => $this->modelMovies->getMoviesBestSaleMb(),
-        //             'listMoviesEarlyMb' => $this->modelMovies->getMoviesEarlyMb(),
-        //             'listBookBestSalesMb' => $this->modelBooks->getBookBestSaleMb(),
-        //             'listAppsBestDownMb' => $this->modelApps->getAppBestDownMb(),
-        //         ])
-        //     ]);
-        // }
-
         public function store(){
             $this->views = $this->view('MasterLayout/storeComputer',[
                 'listMoviesBestSale' => $this->modelMovies->getMoviesBestSale(),
@@ -54,7 +28,23 @@
         }
 
         public function apps(){
-            $this->views = $this->view('MasterLayout/storeMain');
+            $this->views = $this->view('MasterLayout/storeComputer',[
+                'listMoviesBestSale' => $this->modelMovies->getMoviesBestSale(),
+                'listMoviesEarly' => $this->modelMovies->getMoviesEarly(),
+                'listBooks' => $this->modelBooks->getBooks(),
+                'listApps' => $this->modelApps->getApps(),
+                'viewMobile' => 'MasterLayout/storeMobile',
+                'listMoviesBestSaleMb' => $this->modelMovies->getMoviesBestSaleMb(),
+                'listMoviesEarlyMb' => $this->modelMovies->getMoviesEarlyMb(),
+                'listBookBestSalesMb' => $this->modelBooks->getBookBestSaleMb(),
+                'listAppsBestDownMb' => $this->modelApps->getAppBestDownMb(),
+            ]);
+        }
+
+        public function login(){
+            $username = isset($_POST['username']) ? $_POST['username'] : '';
+            $password = isset($_POST['password']) ? $_POST['password'] : '';
+            $this->modelsAccount->checkLogin($username,$password);
         }
         public function movies(){
             $this->views = $this->view('MasterLayout/storeMain');
@@ -82,7 +72,5 @@
                     exit;
             }
         }
-
-
     }
 ?>

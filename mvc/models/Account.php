@@ -6,6 +6,29 @@
             return mysqli_query($this->conn, $sql);
         }  
 
+        public function checkRegister($username){
+            $username = mysqli_real_escape_string($this->conn,$username);
+            $sql = "SELECT * FROM account WHERE username = '$username'";
+            $account = mysqli_query($this->conn,$sql);
+            if($account){
+                if(mysqli_num_rows($account) > 0){
+                    return false;
+                }
+                return true;
+            }
+        }
+
+        public function register($username, $password, $email){
+            $username = mysqli_real_escape_string($this->conn,$username);
+            $password = password_hash(mysqli_real_escape_string($this->conn,$password),PASSWORD_DEFAULT); 
+            $email = mysqli_real_escape_string($this->conn,$email);
+            $sql = "INSERT INTO `account`(`username`,`password`,`email`) VALUES('$username','$password','$email')";
+            if(mysqli_query($this->conn, $sql)){
+                return true;
+            }
+            return false;
+        }
+        
         public function checkLogin($username, $password){
             
         }

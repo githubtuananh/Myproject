@@ -30,4 +30,5 @@
 <!-- <script src="/demoGooglePlay/public/js/js_store7.js"></script> -->
 <!-- <script src="/demoGooglePlay/public/js/validator.js"></script> -->
 <!-- <script src="/demoGooglePlay/public/js/main.js"></script> -->
-</
+</html>
+

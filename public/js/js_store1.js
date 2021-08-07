@@ -1,4 +1,43 @@
 $(document).ready(function(){
+    //Xử lý tắt login register
+    $(document).on('click','.page-login .fa-times',function(e){
+        // $('.item-container').fadeIn()
+        $('.cover-main').fadeOut('fast')
+        $('.page-login').fadeOut()
+    })
+    $(document).on('click','.page-register .fa-times',function(e){
+        // $('.item-container').fadeIn()
+        $('.page-register').fadeOut()
+        $('.cover-main').fadeOut('fast')
+    })
+
+    //Xử lý show/hide password
+    $(document).on('click','.show-password input',function(){
+        var status = $('input[name="password"]').attr('unmark')
+        if(status=='show'){
+            $('input[name="password"]').attr('type','text')
+            $('input[name="password"]').attr('unmark','hide')
+            $('input[name="password-confirm"]').attr('type','text')
+            $('input[name="password-confirm"]').attr('unmark','hide')
+            $('input[type="checkbox"]').prop("checked", true);
+        }
+        else{
+            $('input[name="password"]').attr('type','password')
+            $('input[name="password"]').attr('unmark','show')
+            $('input[name="password-confirm"]').attr('type','password')
+            $('input[name="password-confirm"]').attr('unmark','show')
+            $('input[type="checkbox"]').prop("checked", false);
+        }
+    })
+
+    //Xử lý đăng nhập bằng google
+    $(document).on('click','form .login-google',function(){
+        $.post("/demoGooglePlay/API/loginGoogle",function(data){
+            console.log(data);
+            window.location.href = data;
+        })
+    })
+    
     // ------------------------------------------COMPUTER--------------------------
     // Xử lý giao diện trang
         $(window).scroll(function(){
@@ -12,13 +51,24 @@ $(document).ready(function(){
     
             }
         })
-    
+        
+        //Xử lý suport
         $('.btn-support').click(function(){
-            $('.block-support').slideToggle();
+            history.pushState(null, null, "/demoGooglePlay/support")
+            $('.block-support').slideDown();
         })
         $('.fa-times').click(function(){
+            history.pushState(null, null, "/demoGooglePlay/store")
             $('.block-support').fadeOut('fast');
         })
+
+        //Xử lý setting
+        $('.btn-setting').click(function(){
+            history.pushState(null, null, "/demoGooglePlay/setting")
+            
+        })
+
+        //Xử lý menu
         var url = $(location).attr('href')
         var currentMethod = url.split('/')[url.split('/').length-1]
         if(currentMethod == 'apps'){
@@ -48,18 +98,21 @@ $(document).ready(function(){
     
     // Xử lý ajax login
         $('#login').click(function(){
+            history.pushState(null, null, "/demoGooglePlay/store/login")
             $.get('/demoGooglePlay/ajax/login',function(data){
                 $('.cover-main').fadeIn('fast')
                 $('body').append(data)
             })
         })
         $('#register').click(function(){
+            history.pushState(null, null, "/demoGooglePlay/store/register")
             $.get('/demoGooglePlay/ajax/register',function(data){
                 $('body').append(data)
                 $('.cover-main').fadeIn('fast')
             })
         })
         $('.cover-main').click(function(){
+            history.pushState(null, null, "/demoGooglePlay/store")
             $('.cover-main').fadeOut('fast')
             $('.page-login').remove();
             $('.page-register').remove();
@@ -105,15 +158,19 @@ $(document).ready(function(){
     
     //Xử lý login register
         $('.slide-user .login').click(function(){
+            history.pushState(null, null, "/demoGooglePlay/store/login")
             $.get('/demoGooglePlay/ajax/login',function(data){
-                $('.item-container').css('display','none')
+                // $('.item-container').css('display','none')
                 $('.container').append(data)
+                $('.page-register').remove();
             })
         })
         $('.slide-user .register').click(function(){
+            history.pushState(null, null, "/demoGooglePlay/store/register")
             $.get('/demoGooglePlay/ajax/register',function(data){
-                $('.item-container').css('display','none')
+                // $('.item-container').css('display','none')
                 $('.container').append(data)
+                $('.page-login').remove();
             })
         })
         
@@ -130,8 +187,7 @@ $(document).ready(function(){
                     classBLock:classBLock
                 }
                 ,function(data){
-                $('.item-container').css('display','none')
-                $('.container.mobile').append(data)
+                $('.container.mobile').html(data)
             })
         })
         $('.container.mobile .btn-filmEarly').click(function(){
@@ -146,8 +202,7 @@ $(document).ready(function(){
                     classBLock:classBLock
                 }
                 ,function(data){
-                $('.item-container').css('display','none')
-                $('.container.mobile').append(data)
+                $('.container.mobile').html(data)
             })
         })
         $('.container.mobile .btn-bookBestSale').click(function(){
@@ -162,8 +217,7 @@ $(document).ready(function(){
                     classBLock:classBLock
                 }
                 ,function(data){
-                $('.item-container').css('display','none')
-                $('.container.mobile').append(data)
+                $('.container.mobile').html(data)
             })
         })
         $('.container.mobile .btn-appBestDown').click(function(){
@@ -178,8 +232,7 @@ $(document).ready(function(){
                     classBLock:classBLock
                 }
                 ,function(data){
-                $('.item-container').css('display','none')
-                $('.container.mobile').append(data)
+                $('.container.mobile').html(data)
             })
         })
 

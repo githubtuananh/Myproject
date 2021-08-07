@@ -544,6 +544,7 @@ Xử lý js phần scroll */
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
+    border-radius: 5px;
 }
 .main{
     width: 100%;
@@ -573,7 +574,13 @@ Xử lý js phần scroll */
     margin-top: 2rem;
     width: 90%;
     padding-left: 10%;
-
+}
+.page-register .form-group .message{
+    margin-bottom: 1rem;
+    color: coral;
+    font-size: 1.3rem;
+    font-weight: bold;
+    display: none;
 }
 .page-login form input, .page-register form input{
     width: 100%;
@@ -647,7 +654,7 @@ Xử lý js phần scroll */
 /* ----------------------------------REGISTER------------------------------------ */
 .page-register{
     width: 30rem;
-    height: 45rem;
+    height: 50rem;
     background-color: #ffffff;
     position: absolute;
     z-index: 6;
@@ -655,7 +662,14 @@ Xử lý js phần scroll */
     box-shadow: 0 .2rem 1rem rgba(0,0,0,.2);
     position: fixed;
     left: 50%;
+    border-radius: 5px;
     transform: translateX(-50%);
+}
+.page-register > .fa-times, .page-login > .fa-times{
+    color: #ccc;
+    font-size: 3rem;
+    position: absolute;
+    cursor: pointer;
 }
 .page-register #title{
     margin: 5rem 0 3rem 0;
@@ -674,6 +688,23 @@ Xử lý js phần scroll */
     cursor: pointer;
     color: #ffffff;
     font-size: 1.3rem;
+}
+.page-register .status{
+    font-size: 1.8rem;
+    margin-top: 3rem;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    /* visibility:hidden; */
+}
+.page-register .status p{
+    margin-left: 1rem;
+}
+.success{
+    color: #6bb62a;
+}
+.error{
+    color: #ed3b3b;
 }
 
 /* ----------------------------------LOADING PAGE------------------------------- */

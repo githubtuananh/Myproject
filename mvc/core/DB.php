@@ -6,6 +6,12 @@
         // protected $pass = 'wQtdUv61D9g';
         // protected $db = 'epiz_28746779_GooglePlay';
 
+        // protected $conn;
+        // protected $host = '';
+        // protected $user = 'id17303187_tuananhstore';
+        // protected $pass = 'CP>w/J(g*8IC#X~W';
+        // protected $db = 'id17303187_letuananh';
+        
         protected $conn;
         protected $host = 'localhost';
         protected $user = 'root';

@@ -26,7 +26,6 @@
 
             //Goi phuong thuc
             call_user_func_array([$Control, $this->action], $this->params);
-
         }
 
         public function getURL(){

@@ -8,8 +8,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"> </script>
     <script src="https://cdn.lordicon.com/libs/frhvbuzj/lord-icon-2.0.2.js"></script>
-    <link rel="stylesheet" href="/demoGooglePlay/public/css/css_store88.css">
-    <link rel="stylesheet" href="/demoGooglePlay/public/css/css_storeMobile88.css">
+    <link rel="stylesheet" href="/demoGooglePlay/public/css/css_store4.css">
+    <link rel="stylesheet" href="/demoGooglePlay/public/css/css_storeMobile1.css">
     <title>LE TUAN ANH</title>
 </head>
 <body>
@@ -62,7 +62,7 @@
         <section class="sub-header">
             <div class="support">
                 <div class="btn-support"><i class="fa fa-question-circle" aria-hidden="true"></i></div>
-                <div><i class="fa fa-cog" aria-hidden="true"></i></div>
+                <div class="btn-setting"><i class="fa fa-cog" aria-hidden="true"></i></div>
             </div>
             <div class="block-support">
                 <div class="header">
@@ -294,7 +294,7 @@
     </section> <!--end container -->
 </div>
 
-<script src="/demoGooglePlay/public/js/js_store88.js"></script>
-<script src="/demoGooglePlay/public/js/validator88.js"></script>
+<script src="/demoGooglePlay/public/js/js_store1.js"></script>
+<script src="/demoGooglePlay/public/js/checkValidator2.js"></script>
 </body>
 </html>

@@ -26,6 +26,12 @@
         padding-bottom: 10rem;
         padding-top: 3rem;
     }
+    .container.mobile .page-login > .fa-times{
+        color: #17293a;
+    }
+    .container.mobile .page-register > .fa-times{
+        color: #17293a;
+    }
     /* --------------------------------------Content */
     .container{
         width: 100%;
