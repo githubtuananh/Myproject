@@ -23,7 +23,7 @@
     </div>
     <div class="nav-bar">
         <div class="nav-bar1">
-            <p class="name-store">TUANANH</p>
+            <p class="name-store">ENTERTAIN</p>
             <div class="block-user">
                 <div class="block-user1">
                     <i class="fa fa-user-circle-o" aria-hidden="true"></i>

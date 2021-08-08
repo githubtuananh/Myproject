@@ -1,15 +1,22 @@
 <?php 
     session_start();
     class Account extends DB{
+        //Lấy thông tin khách hàng
         public function getGuest(){
             $sql = 'SELECT * FROM account';
             return mysqli_query($this->conn, $sql);
         }  
+        
+        //Lấy thông tin người dùng theo username
+        public function getUserById($username){
+            $username = mysqli_real_escape_string($this->conn, $username);
+            $sql = "SELECT * FROM account WHERE username  = '$username' LIMIT 1";
+            return mysqli_query($this->conn, $sql);
+        }
 
+        //Kiểm tra username đăng kí có trùng hay không
         public function checkRegister($username){
-            $username = mysqli_real_escape_string($this->conn,$username);
-            $sql = "SELECT * FROM account WHERE username = '$username'";
-            $account = mysqli_query($this->conn,$sql);
+            $account = $this->getUserById($username);
             if($account){
                 if(mysqli_num_rows($account) > 0){
                     return false;
@@ -18,19 +25,44 @@
             }
         }
 
+        //Thêm account sau khi đăng kí thành công
         public function register($username, $password, $email){
             $username = mysqli_real_escape_string($this->conn,$username);
             $password = password_hash(mysqli_real_escape_string($this->conn,$password),PASSWORD_DEFAULT); 
-            $email = mysqli_real_escape_string($this->conn,$email);
+            $email    = mysqli_real_escape_string($this->conn,$email);
             $sql = "INSERT INTO `account`(`username`,`password`,`email`) VALUES('$username','$password','$email')";
             if(mysqli_query($this->conn, $sql)){
                 return true;
             }
             return false;
         }
-        
-        public function checkLogin($username, $password){
-            
+
+        //Kiểm tra xem tài khoản đăng nhập có tồn tại không
+        public function checkLogin($username){
+            $account = $this->getUserById($username);
+            if($account){
+                if(mysqli_num_rows($account) == 1){
+                    return true;
+                }return false;
+            }
+        }
+
+        //Kiểm tra password có đúng không
+        public function checkPassword($username, $password){
+            $account = $this->getUserById($username);
+            $passwordTrue = mysqli_fetch_array($account)['password'];
+            if(!password_verify($password,$passwordTrue)){
+                return false;
+            }
+            $account = [
+                'username' => $username,
+                'password' => $password,
+                'name' => 'Tài khoản',
+                'email' => '',
+                'avatar' => '',
+            ];
+            $_SESSION['login'] = $account;
+            return true;
         }
 
         //Random pasword

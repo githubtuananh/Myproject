@@ -12,6 +12,9 @@
             $this->modelBooks = $this->model('Books');
             $this->modelApps = $this->model('Apps');
         }
+        public function page_404(){
+            $this->views = $this->view('DetailsView/page_404');
+        }
 
         public function store(){
             $this->views = $this->view('MasterLayout/storeComputer',[
@@ -41,11 +44,7 @@
             ]);
         }
 
-        public function login(){
-            $username = isset($_POST['username']) ? $_POST['username'] : '';
-            $password = isset($_POST['password']) ? $_POST['password'] : '';
-            $this->modelsAccount->checkLogin($username,$password);
-        }
+
         public function movies(){
             $this->views = $this->view('MasterLayout/storeMain');
         }

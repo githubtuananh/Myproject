@@ -6,50 +6,47 @@
     box-sizing: border-box;
 }
 html {
+    font-size: 62.5%;
     color: #333;
     font-family: "Open Sans", sans-serif;
     background-color: #f1f1f1;
-    font-size: 62.5%;
 }
 a{
     text-decoration: none;
 }
 
-
 /* ------------------------------------------------------------------------------- */
 /* Xử lý header */
 .header{
-    height: 6rem;
     display: flex;
     align-items: center;
+    height: 6rem;
 }
 .header #img-logo{
     margin:0 3rem;
 }
 .header .login-register{
-    width: 40%;
     display: flex;
     justify-content: flex-end;
     margin-right: 2rem;
+    width: 40%;
 }
 .header .form-group{
     width: 50%;
 }
 .header .form-group input{
-    /* min-width: 55rem; */
     width: 100%;
     height: 3rem;
-    border-radius:0.3rem;
-    padding-left: 1rem;
-    outline:none;
-    border:none;
+    border-radius:0.5rem;
     border: 0.1rem solid #ccc;
-    font-size: 1.5rem;
+    outline:none;
+    padding-left: 1rem;
     margin-left: -1rem;
+    font-size: 1.5rem;
 }
 .header .login-register #login{
-    background-color: #4584f0;
     margin-right: 1rem;
+    background-color: #4584f0;
 }
 .header .login-register #register{
     background-color: #ed3b3b;
@@ -59,19 +56,19 @@ a{
 }
 .header .login-register #register,#login,#logout{
     display:inline-block;
-    height: 3rem;
     padding:0 1.2rem;
+    height: 3rem;
     line-height: 3rem;
-    font-size:1.3rem;
-    color:#ffffff;
-    font-weight:bold;
     border-radius:0.2rem;
+    font-size:1.3rem;
+    font-weight:bold;
+    color:#ffffff;
     cursor: pointer;
 }
 .login-register .avatar{
     width: 3rem;
     height: 3rem;
-    margin-right: 0.5rem;
+    margin-right: 0.5rem;    
     cursor: pointer;
 }
 
@@ -535,7 +532,7 @@ Xử lý js phần scroll */
 /* Trang đăng nhập */
 .page-login{
     width: 30rem;
-    height: 45rem;
+    /* height: 45rem; */
     background-color: #ffffff;
     position: absolute;
     z-index: 6;
@@ -544,13 +541,14 @@ Xử lý js phần scroll */
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    border-radius: 5px;
+    border-radius: 0.5rem;
 }
 .main{
     width: 100%;
     height: 100%;
     position: relative;
     max-width: 200rem;
+    margin: 0 auto;
 }
 .cover-main{
     width: 100%;
@@ -581,6 +579,12 @@ Xử lý js phần scroll */
     font-size: 1.3rem;
     font-weight: bold;
     display: none;
+}
+.page-login .message{
+    text-align: center;
+    color: coral;
+    font-size: 1.3rem;
+    font-weight: bold;
 }
 .page-login form input, .page-register form input{
     width: 100%;
@@ -629,32 +633,17 @@ Xử lý js phần scroll */
     font-weight: bold;
     line-height: 3.5rem;
     border-radius: 0.5rem;
+    margin-bottom: 5rem;
 }
 .login-google:hover{
     background-color: #e47260;
     cursor: pointer;
 }
-/* .page-login .block-logins{
-    display: flex;
-    justify-content: space-around;
-}
-.page-login .block-logins .item-login{
-    display: flex;
-    width: 48%;
-    justify-content: center;
-    border: 0.1rem solid #ccc;
-    padding: 0.6rem 0.3rem;
-    border-radius: .5rem;
-    cursor: pointer;
-}
-.page-login .block-logins .item-login .fa{
-    margin-right: .5rem;
-    font-size: 1.3rem;
-} */
+
 /* ----------------------------------REGISTER------------------------------------ */
 .page-register{
     width: 30rem;
-    height: 50rem;
+    /* height: 50rem; */
     background-color: #ffffff;
     position: absolute;
     z-index: 6;
@@ -662,7 +651,7 @@ Xử lý js phần scroll */
     box-shadow: 0 .2rem 1rem rgba(0,0,0,.2);
     position: fixed;
     left: 50%;
-    border-radius: 5px;
+    border-radius: 0.5rem;
     transform: translateX(-50%);
 }
 .page-register > .fa-times, .page-login > .fa-times{
@@ -695,7 +684,7 @@ Xử lý js phần scroll */
     text-align: center;
     font-weight: bold;
     display: flex;
-    /* visibility:hidden; */
+    margin-bottom: 5rem;
 }
 .page-register .status p{
     margin-left: 1rem;

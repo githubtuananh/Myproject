@@ -1,4 +1,66 @@
 <h1>asdasdasd</h1>
+<?php 
+//Xem thông tin phim
+public function Readmovies(){
+    $movie = [];
+    $movie['film'] = [];
+    $film = $this->modelMovies->getMoviesEarly();
+    while($row = mysqli_fetch_array($film)){
+        $t = array(
+            'idFilm' => $row['idFilm'],
+            'name' => $row['name'],
+            'genre' => $row['genre'],
+            'purchase' => $row['purchase'],
+            'poster' => $row['poster'],
+        );
+        array_push($movie['film'],$t);
+    }
+    echo json_encode($movie);
+}
+
+//show thông tin phim theo id
+public function show($id){
+    $movie = [];
+    $movie['film'] = [];
+    $film = $this->modelMovies->showMovies($id);
+    while($row = mysqli_fetch_array($film)){
+        $t = array(
+            'idFilm' => $row['idFilm'],
+            'name' => $row['name'],
+            'genre' => $row['genre'],
+            'purchase' => $row['purchase'],
+            'poster' => $row['poster'],
+        );
+        array_push($movie['film'],$t);
+    }
+    echo json_encode($movie);
+}
+?>
+public function url(){
+             echo $_GET['test'];
+             $url = 'http://localhost:8888/demoGooglePlay/API/url/asd?test=123';
+             $url = explode('/',trim($url));
+             print_r($url);
+             echo $_GET['test'];
+        }
+
+Xử lý login bằng facebook
+        public function loginFacebook(){
+            require_once('library/facebook-api/vendor/autoload.php');
+            $fbObject = new \Facebook\Facebook([
+                'app_id' => '574504283546541',
+                'app_secret' => '40cd519574e75cebdb47657d2219a81d',
+                'default_graph__version' => 'v2.5',
+            ]);
+            $helper = $fbObject->getRedirectLoginHelper();
+            $redirectTo = "http://localhost:8888/demoGooglePlay/API/handleLoginByFacebook";
+            $email=['email'];
+            $fullURL = $helper->getLoginUrl($redirectTo,$email);
+            echo $fullURL;
+            return [$fbObject, $helper];
+        }
+
+
 // public function store(){
         //     $this->views = $this->view('MasterLayout/storeMain'
         //     ,[  

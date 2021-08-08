@@ -18,7 +18,8 @@
             echo '<div class="page-login" >
                 <i class="fa fa-times" aria-hidden="true"></i>
                 <p id="title">Đăng nhập</p>
-                <form action="/demoGooglePlay/store/login" method="post" class="loginForm">
+                <div class="message"></div>
+                <form action="/demoGooglePlay/store/page_404" method="post" class="loginForm">
                     <div class="form-group">
                         <input type="text" name="username" class="form-control" placeholder="Username" required>
                     </div>
@@ -48,12 +49,33 @@
             </div>';
         }
 
+        //Kiểm tra khi đăng nhập
+        public function loginForm(){
+            $username = isset($_POST['username']) ? trim(htmlspecialchars($_POST['username'])) : '';
+            $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
+            $userExist = $this->modelsAccount->checkLogin($username);
+            if(!empty($username) && !empty($password)){
+                if(!$userExist){
+                    exit("Tên đăng nhập không tồn tại");
+                }else{
+                    $isPass = $this->modelsAccount->checkPassword($username, $password);
+                    if(!$isPass){
+                        exit("Mật khẩu không chính xác"); 
+                    }else{
+                        exit(true);
+                    }
+                }
+            }else{
+                header('location: /demoGooglePlay/store/page_404');
+            }
+        }
+
         // Xử lý đăng kí
         public function register(){
             echo '<div class="page-register">
                 <i class="fa fa-times" aria-hidden="true"></i>
                 <p id="title">Đăng kí</p>
-                <form action="/demoGooglePlay/store/register" method="post" class="registerForm">
+                <form action="/demoGooglePlay/store/page_404" method="post" class="registerForm">
                     <div class="form-group">
                         <input type="text" name="email" class="form-control" placeholder="Email" required>
                         <p class="message check-email"></p>
@@ -84,18 +106,28 @@
                 </form>
             </div>';
         }
+        //Kiểm tra username đăng kí có bị trùng chưa
         public function checkUsername(){
             $username = isset($_POST['username']) ? trim(htmlspecialchars($_POST['username'])) : '';
-            $exist = $this->modelsAccount->checkRegister($username);
-            echo $exist;
+            if(!empty($username)){
+                $exist = $this->modelsAccount->checkRegister($username);
+                echo $exist;
+            }else{
+                header('location: /demoGooglePlay/store/page_404');
+            }
         }
+        //Kiểm tra và thêm user khi đăng kí
         public function registerForm(){
             $email = isset($_POST['email']) ? trim(htmlspecialchars($_POST['email'])) : '';
             $username = isset($_POST['username']) ? trim(htmlspecialchars($_POST['username'])) : '';
-            $password = isset($_POST['password']) ? trim(htmlspecialchars($_POST['password'])) : '';
-            $passwordCf = isset($_POST['password-confirm']) ? trim(htmlspecialchars($_POST['password-confirm'])) : '';
-            $result = $this->modelsAccount->Register($username, $password,$email);
-            echo $result;
+            $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
+            $passwordCf = isset($_POST['password-confirm']) ? htmlspecialchars($_POST['password-confirm']) : '';
+            if(!empty($email) && !empty($username) && !empty($password) && !empty($passwordCf)){
+                $result = $this->modelsAccount->Register($username, $password,$email);
+                echo $result;
+            }else{
+                header('location: /demoGooglePlay/store/page_404');
+            }
         }
 
         // -------------------------------------COMPUTER-------------------------

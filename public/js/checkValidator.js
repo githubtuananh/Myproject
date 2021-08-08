@@ -9,24 +9,32 @@ $(document).ready(function(){
     $(document).on('keyup','input',function(){
         $(document).find('.page-register .status').html('')
     })
+
     //Xử lý username
-    $(document).on('keyup','input[name="username"]',function(e){
+    $(document).on('keyup','.registerForm input[name="username"]',function(e){
         var username = this.value
-        $.post('/demoGooglePlay/ajax/checkUsername',{username: username,},function(data){
-            var message = $(document).find('.form-group .exist-username')
-            if(data==true){
-                message.fadeOut('fast')
-                error.e_username = 0
-            }
-            else{
-                message.fadeIn('fast')
-                message.html('Tài khoản này đã tồn tại !')
-                error.e_username = 1
-            }
-            if(username==''){
-                message.fadeOut('fast')
-            }
-        })
+        var message = $(document).find('.form-group .exist-username')
+        if(username.indexOf(' ')!=-1){
+            message.fadeIn('fast')
+            message.html('Không được chứa dấu cách')
+            error.e_username = 1
+        }
+        else{
+            $.post('/demoGooglePlay/ajax/checkUsername',{username: username,},function(data){
+                if(data==true){
+                    message.fadeOut('fast')
+                    error.e_username = 0
+                }
+                else{
+                    message.fadeIn('fast')
+                    message.html('Tài khoản này đã tồn tại !')
+                    error.e_username = 1
+                }
+                if(username==''){
+                    message.fadeOut('fast')
+                }
+            })
+        }
     })
     //Xử lý email
     $(document).on('keyup','input[name="email"]',function(e){
@@ -46,6 +54,7 @@ $(document).ready(function(){
             message.fadeOut('fast')
         }
     })
+
     //Xử lý password
     $(document).on('keyup','input[name="password"]',function(e){
         var password = this.value
@@ -79,6 +88,7 @@ $(document).ready(function(){
             message.fadeOut('fast')
         }
     })
+
     //Xử lý password confirm
     $(document).on('keyup','input[name="password-confirm"]',function(e){
         var password = $(document).find('input[name="password"]').val()
@@ -97,6 +107,7 @@ $(document).ready(function(){
             message.fadeOut('fast')
         }
     })  
+
     //Xử lý submit register
     $(document).on('submit','.registerForm',function(e){
         e.preventDefault()
@@ -104,12 +115,13 @@ $(document).ready(function(){
         Object.values(error).forEach(value => {
             flag+=value
         })
-        if(flag==0){
-            var email = $(document).find('input[name="email"]').val()
-            var username = $(document).find('input[name="username"]').val()
-            var password = $(document).find('input[name="password"]').val()
-            var passwordConfirm = $(document).find('input[name="password-confirm"]').val()
-            if(email!='' && username!='' && password!='' && passwordConfirm!=''){
+        var email = $(document).find('input[name="email"]').val()
+        var username = $(document).find('input[name="username"]').val()
+        var password = $(document).find('input[name="password"]').val()
+        var passwordConfirm = $(document).find('input[name="password-confirm"]').val()
+
+        if(email!='' && username!='' && password!='' && passwordConfirm!=''){
+            if(flag==0){
                 $.post('/demoGooglePlay/ajax/registerForm',
                 {
                     email: email,
@@ -137,18 +149,38 @@ $(document).ready(function(){
                 $(document).find('.page-register .status').addClass('error')
                 $(document).find('.page-register .status').removeClass('success')
                 $(document).find('.page-register .status').html(
-                    '<i class="fa fa-times" aria-hidden="true"></i> <p>Vui lòng điền đầy đủ</p>'
-                )                
+                    '<i class="fa fa-times" aria-hidden="true"></i> <p>Đăng kí thất bại</p>'
+                )
             }
         }else{
             $(document).find('.page-register .status').addClass('error')
             $(document).find('.page-register .status').removeClass('success')
             $(document).find('.page-register .status').html(
-                '<i class="fa fa-times" aria-hidden="true"></i> <p>Đăng kí thất bại</p>'
+                '<i class="fa fa-times" aria-hidden="true"></i> <p>Vui lòng điền đầy đủ</p>'
             )
         }
     })
 
-    console.log(123)
+    
     //Xử lý login ajax
+    $(document).on('submit','.loginForm',function(e){
+        e.preventDefault()
+        var username = $(document).find('input[name="username"]').val()
+        var password = $(document).find('input[name="password"]').val()
+        $.post('/demoGooglePlay/ajax/loginForm',
+        {
+            username: username,
+            password: password
+        },function(data){
+            if(data == true){
+                $('.page-login').fadeOut('fast')
+                $('.cover-main').fadeOut('fast')
+            }
+            else{
+                $(document).find('.page-login .message').html(data)
+            }
+        })
+    })
+
+    
 })
